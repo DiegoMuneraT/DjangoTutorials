@@ -14,6 +14,15 @@
            {{product.name}}
         </h5>
         <p class="card-text">{{product.description}}</p>
+
+        <p class="card-text">
+          <small class="text-muted">
+            {% if product.price > 100 %}
+              <span class="badge bg-danger">Hot</span>
+            {% endif %}
+            Precio: ${{product.price}}
+          </small>
+        </p>
       </div>
     </div>
   </div>
