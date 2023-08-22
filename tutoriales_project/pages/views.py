@@ -48,12 +48,9 @@ class ProductShowView(View):
             product_id = int(id)
             if product_id < 1:
                 raise ValueError("Product id must be 1 or greater")
-            product = get_object_or_404(Product, pk=product_id)
-
         except (ValueError, IndexError):
-
             # If the product id is not valid, redirect to home page
-            return HttpResponseRedirect(reverse('home'))
+            return redirect(reverse('home'))
 
         viewData = {}
         
@@ -101,7 +98,7 @@ class ProductCreateView(View):
         form = ProductForm(request.POST)
         if form.is_valid:
             form.save()
-            return redirect(form)
+            return redirect('home')
         else:
             viewData = {}
             viewData["title"] = "Create product"
