@@ -4,7 +4,7 @@ from .interfaces import ImageStorage
 
 class ImageLocalStorage(ImageStorage):
 
-    def store(self, request:HttpRequest):
+    def store(self, request: HttpRequest):
         profile_image = request.FILES.get('profile_image', None)
         if profile_image:
             # Store the image
